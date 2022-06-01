@@ -21,7 +21,7 @@
     </thead>
     <tbody>
       <% enhanced_cart.each do |item| %>
-        <%= render 'order', product: item[:product] %>
+        <%= render 'order', product: item[:product], quantity: item[:quantity] %>
       <% end %>
     </tbody>
     <tfoot>
