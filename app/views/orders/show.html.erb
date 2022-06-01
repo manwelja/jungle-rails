@@ -20,20 +20,8 @@
       </tr>
     </thead>
     <tbody>
-    <%= @line_items.inspect %>
-    <br><br>products
-    <%= @products.inspect %>
-    <% @products.each do |item| %>
-      <%= item[:image] %>
-      <%= item[:product_id] %>
-      <%= item[:item_price_cents] %>
-      <%= item[:description] %>
-      <%= item[:quantity] %>
-      <%= item[:total_cents] %>
-      <%#= item[:product_id][:description] %>#
-    <% end %>
-      <% @products.each do |item| %>
-        <%= render 'order', product: item, quantity: item[:quantity] %>
+      <% @complete_order.each do |item| %>
+        <%= render 'order', order: item, line_item: item[:LineItem] %>
       <% end %>
     </tbody>
     <tfoot>
@@ -42,7 +30,7 @@
           TOTAL:
         </th>
         <th>
-          <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
+          <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
         </th>
       </tr>
     </tfoot>
