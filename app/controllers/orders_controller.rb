@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @items = enhanced_cart  
+    puts @items
   end
 
   def create
