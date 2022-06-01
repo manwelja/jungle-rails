@@ -2,8 +2,15 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @items = enhanced_cart  
-    puts @items
+   # @all_items = @items
+    #@all_items = Order.joins(:line_items).select('line_items.*').where(id: params[:id])
+    @all_items2 = Order.joins(:line_items).select('*').where(id: params[:id])
+    @all_items3 = Product.joins(:line_items).select('*').where(id: params[:id])
+    @line_items = @order.line_items
+    
+    @products = @line_items.joins("INNER JOIN products on line_items.product_id = products.id").select('*')
+    puts "lined items.........................."
+    puts @products
   end
 
   def create
@@ -54,6 +61,7 @@ class OrdersController < ApplicationController
         total_price: product.price * quantity
       )
     end
+   
     order.save!
     order
   end

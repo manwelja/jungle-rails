@@ -20,8 +20,20 @@
       </tr>
     </thead>
     <tbody>
-      <% enhanced_cart.each do |item| %>
-        <%= render 'order', product: item[:product], quantity: item[:quantity] %>
+    <%= @line_items.inspect %>
+    <br><br>products
+    <%= @products.inspect %>
+    <% @products.each do |item| %>
+      <%= item[:image] %>
+      <%= item[:product_id] %>
+      <%= item[:item_price_cents] %>
+      <%= item[:description] %>
+      <%= item[:quantity] %>
+      <%= item[:total_cents] %>
+      <%#= item[:product_id][:description] %>#
+    <% end %>
+      <% @products.each do |item| %>
+        <%= render 'order', product: item, quantity: item[:quantity] %>
       <% end %>
     </tbody>
     <tfoot>
