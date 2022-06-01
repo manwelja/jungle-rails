@@ -9,5 +9,7 @@ class Admin::DashboardController < ApplicationController
   protect_from_forgery with: :exception
 
   def show
+    @product_count = Product.count(:id)
+    @category_count = Category.count(:id)
   end
 end
