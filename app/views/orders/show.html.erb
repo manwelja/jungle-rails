@@ -16,12 +16,12 @@
         <th>Name</th>
         <th>Description</th>
         <th>Quantity</th>
-        <th>Line Item Total</th>
+        <th>Item Total</th>
       </tr>
     </thead>
     <tbody>
       <% @complete_order.each do |item| %>
-        <%= render 'order', order: item, line_item: item[:LineItem] %>
+        <%= render 'order', order: item %>
       <% end %>
     </tbody>
     <tfoot>

@@ -2,12 +2,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-   # @all_items = @items
-    #@all_items = Order.joins(:line_items).select('line_items.*').where(id: params[:id])
-    #@all_items2 = Order.joins(:line_items).select('*').where(id: params[:id])
-    #@all_items3 = Product.joins(:line_items).select('*').where(id: params[:id])
     @line_items = @order.line_items
-    
+    #Get a complete list of all products and order details for the specified order    
     @complete_order = @line_items.joins("INNER JOIN products on line_items.product_id = products.id").select('line_items.*, products.id, products.description, products.name, products.image')
 
   end
