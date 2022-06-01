@@ -16,8 +16,4 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get faq" do
-    get static_pages_about_us_url
-    assert_response :success
-  end
 end
