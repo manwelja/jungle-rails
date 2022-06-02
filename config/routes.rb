@@ -20,15 +20,15 @@ Rails.application.routes.draw do
   end
 
   # Routes used for user authentication
-#  resources :users, only: [:new, :create]  
-  get '/signup' => 'users#new'
-  post '/users' => 'users#create'
-
+  get '/signup', to: 'users#new'
+  post '/users', to: 'users#create'
+  resources :users, only: [:new, :create]  
+ 
   #Routes used for user sign in
-  #resources :sessions, only: [:new, :create, :destroy]  
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+  resources :sessions, only: [:new, :create, :destroy]  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
