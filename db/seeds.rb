@@ -29,6 +29,8 @@ cat1 = Category.find_or_create_by! name: 'Evergreens'
 cat2 = Category.find_or_create_by! name: 'Shrubs'
 cat3 = Category.find_or_create_by! name: 'Trees'
 
+##USERS
+user1 = User.create(first_name: "FirstName", last_name: "LastName", email: "email@test.com", password:"1234567", password_confirmation:"1234567")
 ## PRODUCTS
 
 puts "Re-creating Products ..."
