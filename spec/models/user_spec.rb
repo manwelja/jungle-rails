@@ -13,11 +13,11 @@ RSpec.describe User, type: :model do
       expect(@user2).to_not be_valid 
     end
     it 'should validate that an email address is unique' do
-      @user1= User.new(first_name: "FirstName", last_name: "LastName", email: "email@test.com", password:"123456", password_confirmation:"123456")
-      @user2= User.new(first_name: "FirstName", last_name: "LastName", email: "email@test.com", password:"123456", password_confirmation:"123456")
-      expect(@user1).to be_valid
+      @user1= User.create(first_name: "FirstName", last_name: "LastName", email: "email@test.com", password:"123456", password_confirmation:"123456")
+      @user2= User.create(first_name: "FirstName", last_name: "LastName", email: "email@test.com", password:"123456", password_confirmation:"123456")
+      expect(@user2).to_not be_valid
     end
-    it 'should validate thath email, first_name and last_name are present' do
+    it 'should validate that email, first_name and last_name are present' do
       @user1= User.new(first_name: nil, last_name: "LastName", email: "email@test.com", password:"123456", password_confirmation:"123456")
       @user2= User.new(first_name: "FirstName", last_name:nil, email: "email@test.com", password:"123456", password_confirmation:"123456")
       @user3= User.new(first_name: "FirstName", last_name: "LastName", email: nil, password:"123456", password_confirmation:"123456")
@@ -30,5 +30,12 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
  
+    describe '.authenticate_with_credentials' do
+      it 'should validate user authentication with name and password' do
+        @user = User.create(first_name: "FirstName", last_name: "LastName", email: "email@test.com", password:"123456", password_confirmation:"123456")
+        authenticate = User.authenticate_with_credentials(@user.email, @user.password)
+        expect(authenticate).to_not be_valid
+      end
+    end
   end
 end

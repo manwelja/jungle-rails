@@ -6,4 +6,10 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
+
+  def self.authenticate_with_credentials(email, password)
+    lower_email = email.downcase
+    user = User.find_by(email: lower_email)
+    user && user.authenticate(password)
+  end
 end
