@@ -1,7 +1,8 @@
 # Jungle
 
-A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
+A mini e-commerce application built with Rails 6.1.  It is an enhanced version that originated a template created for purposes of teaching Rails by example.
 
+A number of enhancements 
 ## Setup
 
 1. Run `bundle install` to install dependencies
